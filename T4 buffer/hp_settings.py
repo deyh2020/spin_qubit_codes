@@ -19,4 +19,3 @@ HP.ch1.output('ON')
 # stop it
 HP.sync.output('OFF')
 HP.ch1.output('OFF')
-# %%
