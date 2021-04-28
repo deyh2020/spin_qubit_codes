@@ -184,6 +184,10 @@ def dointeger1d(
             param_set.set(set_point)
             Alazar.sync_settings_to_card()
             ChannelC.prepare_channel()
+            AWG_CPH.ch1_state(1)
+            AWG_CPH.ch2_state(1)
             datasaver.add_result((param_set, set_point),
                                   *_process_params_meas(param_meas))
+            AWG_CPH.ch1_state(0)
+            AWG_CPH.ch2_state(0)
     return _handle_plotting(datasaver, do_plot, interrupted())
