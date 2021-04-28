@@ -187,3 +187,25 @@ def dointeger1d(
             datasaver.add_result((param_set, set_point),
                                   *_process_params_meas(param_meas))
     return _handle_plotting(datasaver, do_plot, interrupted())
+
+# %%%%% WORKING EXAMPLE %%%%%
+# pulsetable(AWG=AWG_CPH)
+# %%
+# qdac_CPH.BNC10(-0.144)
+# qdac_CPH.BNC12(-0.241)
+# Alazar.trigger_delay(3000) 
+# Alazar.sample_rate(1e9)
+# AlazarController.int_time(1e-6)
+# Alazar.sync_settings_to_card()
+# ChannelC.acquisition_kwargs['buffer_timeout'] = 10000
+# ChannelC.num_averages(300)
+# ChannelC.records_per_buffer(200)
+# ChannelC.prepare_channel()
+
+# # AWG_CPH.ch1_state(1)
+# # AWG_CPH.ch2_state(1)
+
+# dointeger1d(Alazar.trigger_delay, 3,10,1,0.001,ChannelC.data)
+
+# # AWG_CPH.ch1_state(0)
+# # AWG_CPH.ch2_state(0)
