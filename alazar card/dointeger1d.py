@@ -179,7 +179,7 @@ def dointeger1d(
     # and set parameters. For anything more complicated this should be
     # reimplemented from scratch
     with _catch_keyboard_interrupts() as interrupted, meas.run() as datasaver:
-        for set_point in [2**i for i in range(start,stop,num_points)]:
+        for set_point in [8*i for i in range(start,stop,num_points)]:
            #         for set_point in np.linspace(start, stop, num_points):
             param_set.set(set_point)
             Alazar.sync_settings_to_card()
@@ -191,3 +191,19 @@ def dointeger1d(
             AWG_CPH.ch1_state(0)
             AWG_CPH.ch2_state(0)
     return _handle_plotting(datasaver, do_plot, interrupted())
+# %% WORKING EXAMPLE
+# %%
+# pulsetable(AWG=AWG_CPH)
+# # %% detuning trigger delay
+# qdac_CPH.BNC10(-0.144)
+# qdac_CPH.BNC12(-0.241)
+# Alazar.trigger_delay(3000) 
+# Alazar.sample_rate(1e9)
+# AlazarController.int_time(1e-6)
+# Alazar.sync_settings_to_card()
+# ChannelC.acquisition_kwargs['buffer_timeout'] = 10000
+# ChannelC.num_averages(300)
+# ChannelC.records_per_buffer(200)
+# ChannelC.prepare_channel()
+# # do0d(ChannelC.data)
+# dointeger1d(Alazar.trigger_delay, 3,5,1,0.001,ChannelC.data)
