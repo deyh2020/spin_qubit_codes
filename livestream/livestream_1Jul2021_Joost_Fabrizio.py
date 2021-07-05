@@ -42,7 +42,6 @@ qdac_OX.ramp_voltages_2d( slow_chans=[7], slow_vstart=[start_slow], slow_vend=[s
                                   fast_chans=[14], fast_vstart=[start_fast], fast_vend=[start_fast + step_fast],
                                   slow_steps = 30, fast_steps = 30,
                                   step_length=0.001)
-# %%
 do0d(ChannelA.data)
 # %%
 for i in range(1000):
