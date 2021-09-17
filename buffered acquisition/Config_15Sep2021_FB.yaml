@@ -1,0 +1,69 @@
+instruments:          
+    keysight_A:
+        type: qcodes.instrument_drivers.Keysight.Keysight_34465A_submodules.Keysight_34465A
+        address: TCPIP0::192.168.15.126::inst0::INSTR
+        enable_forced_reconnect: true
+    keysight_A_2:
+        type: qcodes.instrument_drivers.Keysight.Keysight_34465A_submodules.Keysight_34465A
+        address: TCPIP0::192.168.15.127::inst0::INSTR
+        enable_forced_reconnect: true
+
+                             
+    keithley_A:
+        driver: qcodes.instrument_drivers.tektronix.Keithley_2600_channels 
+        type: Keithley_2600 
+        address: TCPIP0::192.168.15.122::inst0::INSTR
+        enable_forced_reconnect: true
+        parameters:
+            smua.volt:
+                step: 0.01
+                inter_delay: 0.01
+            smub.volt:
+                step: 0.01
+                inter_delay: 0.01
+         
+     
+    qdac_A:
+        type: qcodes.instrument_drivers.QDevil.QDevil_QDAC.QDac
+        address: ASRL4::INSTR
+        enable_forced_reconnect: true
+        init:
+            terminator: \n
+            update_currents: false
+        add_parameters:
+                BNC6: {source: ch02.v, label: BNC6, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}                
+                BNC4: {source: ch03.v, label: BNC4, unit: V, monitor: true, scale: 1, limits: [-1.0, 3.1]}
+                BNC3: {source: ch05.v, label: BNC3, unit: V, monitor: true, scale: 1, limits: [-1.0, 3.1]}
+                BNC48: {source: ch06.v, label: BNC48, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}
+                #BNC10: {source: ch07.v, label: BNC10, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}
+                BNC46: {source: ch09.v, label: BNC46, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}
+                BNC43: {source: ch10.v, label: BNC43, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}
+                BNC16: {source: ch11.v, label: BNC16, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}
+                BNC13: {source: ch12.v, label: BNC13, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}
+                BNC11: {source: ch13.v, label: BNC11, unit: V, monitor: true, scale: 1, limits: [-0.01, 0.01]}
+                bias: {source: ch08.v, label: BNC7, unit: V, monitor: true, scale: 100, limits: [-0.01, 0.01]}
+                #BNC1: {source: ch01.v, label: BNC1, unit: V, monitor: true, scale: 1, post_delay: 0, inter_delay: 0.001, step: 1e-3, initial_value: 0}
+    qdac_A_buffered:
+        type: qcodes.instrument_drivers.QDevil.QDevil_QDAC_BA_07Sep2021.QDac_buffered
+        address: ASRL4::INSTR
+        enable_forced_reconnect: true
+        init:
+            terminator: \n
+            update_currents: false
+        add_parameters:
+                BNC6: {source: ch02.v, label: BNC6, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}                
+                BNC4: {source: ch03.v, label: BNC4, unit: V, monitor: true, scale: 1, limits: [-1.0, 3.1]}
+                BNC3: {source: ch05.v, label: BNC3, unit: V, monitor: true, scale: 1, limits: [-1.0, 3.1]}
+                BNC48: {source: ch06.v, label: BNC48, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}
+                #BNC10: {source: ch07.v, label: BNC10, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}
+                BNC46: {source: ch09.v, label: BNC46, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}
+                BNC43: {source: ch10.v, label: BNC43, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}
+                BNC16: {source: ch11.v, label: BNC16, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}
+                BNC13: {source: ch12.v, label: BNC13, unit: V, monitor: true, scale: 1, limits: [-0.2, 3.1]}
+                BNC11: {source: ch13.v, label: BNC11, unit: V, monitor: true, scale: 1, limits: [-0.01, 0.01]}
+                bias: {source: ch08.v, label: BNC7, unit: V, monitor: true, scale: 100, limits: [-0.01, 0.01]}
+                #BNC1: {source: ch01.v, label: BNC1, unit: V, monitor: true, scale: 1, post_delay: 0, inter_delay: 0.001, step: 1e-3, initial_value: 0}
+    lockin_SR844:
+        type: qcodes.instrument_drivers.stanford_research.driver_SR844_v0d1.SR844
+        address: GPIB0::21::INSTR
+        enable_forced_reconnect: true   
