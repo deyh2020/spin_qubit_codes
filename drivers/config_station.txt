@@ -1,0 +1,6 @@
+    lockin_SR844:
+        type: qcodes.instrument_drivers.stanford_research.driver_SR844_v0d1.SR844
+        address: GPIB0::21::INSTR
+        enable_forced_reconnect: true   
+
+lockin=STATION.load_instrument('lockin_SR844')             
